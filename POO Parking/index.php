@@ -13,5 +13,18 @@ $voiture = new Voiture;
 <head>
 </head>
 <body>
+<form action="#" method="post">
+
+
+</form>
+
+    <?php
+        echo $voiture->model($car);
+        echo $voiture->type($poids);
+        echo $voiture->pays($immat);
+        echo $voiture->roulage($km);
+        echo $voiture->age($date);
+    ?>
+
 </body>
 </html>
