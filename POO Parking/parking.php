@@ -1,65 +1,71 @@
 <?php
 class Voiture{
-    private $_immat;
-    private $_circu;
-    private $_marque;
-    private $_model;
-    public $_km;
-    public $_color;
-    public $_poids;
+    // private $immat;
+    // private $circu;
+    // private $marque;
+    // private $model;
+    // public $km;
+    // public $color;
+    // public $poids;
 
-    public function model($car){
-        if($car === 'Audi'){
-            $this->_model = 'reserved';
+    public function __construct($immat, $circu, $marque, $model, $km, $color, $poids){
+        // $this->photo = $photo;
+        $this ->immat = $immat;
+        $this ->circu = $circu;
+        $this ->km = $km;
+        $this ->model = $model;
+        $this ->marque = $marque;
+        $this ->color = $color;
+        $this ->poids = $poids;
+            }
+
+    public function marque(){
+        if($this->marque === 'Audi'){
+            echo 'Reserved';
         }
         else {
-            $this->_model = 'free';
+            echo 'Free';
         }
-        echo $this->_model;
     }
 
-    public function type($poids){
-        if($poids < 3.5){
-            $this->_poids = 'commerciale';
+    public function type(){
+        if($this->poids < 3.5){
+            echo 'Commerciale';
         }
         else {
-            $this->_poids = 'utilitaire';
+            echo 'Utilitaire';
         }
-        echo $this->_poids;
     }
 
-    public function pays($immat){
-        if(substr($immat,2) === 'DE'){
-            $this->_immat = 'Allemagne';
+    public function pays(){
+        if(substr($this->immat,0,2) === 'DE'){
+            echo 'Allemagne';
         }
-        else if(substr($immat,2) === 'BE'){
-            $this->_immat = 'Belgique';
+        else if(substr($this->immat,0,2) === 'BE'){
+            echo 'Belgique';
         }
-        else if(substr($immat,2) === 'FR'){
-            $this->_immat = 'France';
+        else if(substr($this->immat,0,2) === 'FR'){
+            echo 'France';
         }
-        echo $this->_immat;
     }
 
-    public function roulage($km){
-        if($km < 100000){
-            $this->_km = 'low';
+    public function roulage(){
+        if($this->km < 100000){
+            echo 'Low';
         }
-        else if($km >= 100000 AND $km < 200000){
-            $this->_km = 'medium';
+        else if($this->km >= 100000 AND $this->km < 200000){
+            echo 'Medium';
         }
-        else if($km >= 200000){
-            $this->_km = 'high';
+        else if($this->km >= 200000){
+            echo 'High';
         }
-        echo $this->_km;
     }
 
-    public function age($date){
+    public function age(){
         $t0 = time();
-        $DifSec = $t0 - strtotime($date);
+        $DifSec = $t0 - strtotime($this->circu);
         $DifJour = floor($DifSec/86400);
-        $this->_circu = $DifJour;
-        echo $this->circu;
+        echo $DifJour/365;
     }
 
     public function rouler(){
